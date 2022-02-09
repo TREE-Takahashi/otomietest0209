@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オトミエ</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/destyle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- スプラッシュ画面 -->
+    <div id="SplashWindow" class="Window">
+        <div id="BrandGrp" class="FadeOutBrand">
+            <img src="images/Realize.png" alt="" id="RealizeImage">
+            <img src="images/Tree.png" alt="" id="TreeImage">
+        </div>
+        <div id="AppLogoGrp" class="FadeOutAppLogo">
+            <img src="images/AppLogo.png" alt="" id="AppLogoImage">
+            <!-- <div id="SplashAppText">オトミエ</div> -->
+            <div id="VersionText">Ver.β</div>
+        </div>
+    </div>
+    
+    <!-- ハウトゥ画面 -->
+    <div id="HowToWindow" class="Window">
+        <div class="Slider">
+            <!-- SliderContent:スライドする役目 -->
+            <div class="SliderContent Window">
+                <div id="ConceptCard">
+                    <img src="images/Howto01.png" id="HowtoImg01">
+                </div>
+            </div>
+            <div class="SliderContent Window">
+                <div id="MicOnCard">
+                    <img src="images/Howto02.png" id="HowtoImg02">
+                </div>
+            </div>
+            <div class="SliderContent Window">
+                <div id="StartCard">
+                    <img src="images/Howto03.png" id="HowtoImg03">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 収録画面 -->
+    <div id="RecWindow" class="Window">
+        <div id="TitleLogoRec"></div>
+        <div id="CanvasRealTime"></div>
+        <div id="CanvasWaveFormRec"></div>
+        <div id="RecBottomCover">
+            <div id="ButtonStartRecBack">
+                 <!-- ↓クラスの付け替えで状態(NormalRecBtn StartRecBtn)切り替え -->
+                <div id="ButtonStartRec" class="NormalRecBtn">
+                    <div id="RecCountTextBack">
+                        <div id="RecCountText">5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 再生中画面 -->
+    <div id="PlayWindow" class="Window">
+        <!-- ↓クラスの付け替えで状態(RecNow RecFinish RecIcon RecPlayer)切り替え -->
+        <div id="RecContainer" class="RecNow">
+            <div id="WhiteFadePanelPlay"></div>
+            <div id="CanvasRecMovie"></div>
+            <div id="CanvasWaveFormPlay"></div>
+            <div id="RecDateTime"><img src="images/TimeIcon.png"></i> 2022年12月22日 12:35</div>
+            <div id="RecLocation"><img src="images/LocationIcon.png"></i> 港区南麻布三丁目</div>        
+            <div id="PlayBottomCover">
+                <div id="ButtonStartPlayBack">
+                    <!-- 再生/停止ボタン -->
+                    <!-- ↓クラスの付け替えで状態(PlayMovieBtn StopMovieBtn)切り替え -->
+                    <div id="ButtonStartPlay" class="PlayMovieBtn"></div>
+                </div>
+                <div id="ButtonBackToRecWindow"><i class="fa fa-arrow-left"></i></div>
+                <div id="ButtonDeleteMovie"><i class="fa fa-ellipsis-v"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 画面上側UI -->
+    <div id="OverWindow" class="Window">
+        <div id="TitleLogo"><img src="images/TitleLogo.png"></div>
+        <div id="WhiteFadePanelOver"></div>
+        <!-- ↓クラスの付け替えで状態(InactivePopupWindow ActivePopupWindow)切り替え -->   
+        <div id="DeleteConfirmText" class="InactivePopupWindow">収録データを削除しますか？
+            <div id="DeleteText">削除</div>
+            <div id="CancelText">キャンセル</div>
+        </div>
+    </div>
+
+    <!-- <script src="app.js"></script> -->
+    <script src="script.js"></script>
+</body>
+
+</html>
