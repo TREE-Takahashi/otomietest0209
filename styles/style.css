@@ -88,7 +88,8 @@ body {
 } */
 .FadeOutBrand {
     animation-name: fadeOutBrand;
-    animation-duration: 3s; 
+    /* 1:2の関係 ここは1 */
+    animation-duration: 0.5s; 
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
@@ -103,9 +104,9 @@ body {
   }
 .FadeOutAppLogo {
     animation-name: fadeOutAppLogo;
-    animation-duration: 6s; 
+    /* 1:2の関係 ここは2 */
+    animation-duration: 1s; 
     animation-timing-function: ease;
-    /* animation-delay: 2s; */
     animation-fill-mode: forwards;
 }
 @keyframes fadeOutAppLogo{
@@ -199,6 +200,7 @@ body {
 #CanvasWaveFormRec {
     position: absolute;
     bottom: 259px;
+    left: 0;
     width: 100%;
     height: 120px;
     background-color: rgb(255, 136, 136);
@@ -399,10 +401,55 @@ body {
 #RecContainer.RecIcon #CanvasWaveFormPlay,
 #RecContainer.RecIcon #RecDateTime,
 #RecContainer.RecIcon #RecLocation,
-#RecContainer.RecIcon #PlayBottomCover {
+#RecContainer.RecIcon #PlayBottomCover,
+#RecContainer.RecIcon #ButtonStartPlayBack,
+#RecContainer.RecIcon #ButtonStartPlay,
+#RecContainer.RecIcon #ButtonBackToRecWindow,
+#RecContainer.RecIcon #ButtonDeleteMovie,
+#RecContainer.RecIcon #RecDateTime,
+#RecContainer.RecIcon #RecLocation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     opacity: 0;
     width: 0px;
     height: 0px;
+}
+/* 戻る消すボタン共通 */
+#RecContainer.RecIcon #ButtonBackToRecWindow,
+#RecContainer.RecIcon #ButtonDeleteMovie {
+    line-height: 30px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 0px;
+    color: rgb(230, 230, 230);
+}
+/* 日時場所共通 */
+#RecContainer.RecIcon #RecDateTime,
+#RecContainer.RecIcon #RecLocation {
+    line-height: 20px;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 0px;
+    color: rgb(127, 127, 127);
+}
+/* ボタン共通 */
+#RecContainer.RecIcon #ButtonStartPlayBack,
+#RecContainer.RecIcon #ButtonStartPlay{
+    border-radius: 50%;
+}
+/* 再生/停止ボタン - 再生ボタン状態 */
+#RecContainer.RecIcon #ButtonStartPlay.PlayMovieBtn::before {
+    position: absolute;
+    top: 50%;
+    left: 32.5%;
+    transform: translateY(-50%);
+    width: 0px;
+    height: 0px;
+    border: 0px solid transparent;
+    border-left: 0px solid transparent;
+    box-sizing: border-box;
+    content: "";
 }
 /* 全パーツ共通トランジション */
 #RecContainer.RecIcon #WhiteFadePanelPlay,
@@ -410,9 +457,14 @@ body {
 #RecContainer.RecIcon #CanvasWaveFormPlay,
 #RecContainer.RecIcon #RecDateTime,
 #RecContainer.RecIcon #RecLocation,
-#RecContainer.RecIcon #PlayBottomCover
+#RecContainer.RecIcon #PlayBottomCover,
+#RecContainer.RecIcon #ButtonStartPlayBack,
+#RecContainer.RecIcon #ButtonStartPlay,
+#RecContainer.RecIcon #ButtonBackToRecWindow,
+#RecContainer.RecIcon #ButtonDeleteMovie,
+#RecContainer.RecIcon #ButtonStartPlay.PlayMovieBtn::before
 {
-    transition-duration: 1s;
+    transition-duration: 0.75s;
 }
 /* -----------------プレイヤー状態------------------ */
 /* 白フェード */
@@ -437,9 +489,10 @@ body {
 #RecContainer.RecPlayer #CanvasWaveFormPlay {
     position: absolute;
     bottom: 259px;
+    left: 0;
     width: 100%;
     height: 120px;
-    background-color: rgb(255, 136, 136);
+    background-color: rgb(255, 225, 54);
 }
 /* 日時場所共通 */
 #RecContainer.RecPlayer #RecDateTime,
@@ -516,7 +569,7 @@ body {
     width: 12px;
     height: 45px;
     box-sizing: border-box;
-    background-color: rgb(255, 255, 255);;
+    background-color: rgb(255, 255, 255);
     content: "";
 }
 #RecContainer.RecPlayer #ButtonStartPlay.StopMovieBtn::before {
@@ -560,13 +613,24 @@ body {
 #RecContainer.RecPlayer #ButtonBackToRecWindow,
 #RecContainer.RecPlayer #ButtonDeleteMovie
 {
-    transition-duration: 1s;
+    transition-duration: 0.75s;
 }
 
 /* ---------- 画面上にかぶるUI ---------- */
 #OverWindow {
     z-index: 30;
     pointer-events: none;
+}
+/* クリック抑止板 */
+#ClickDefence {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: auto;
+}
+/* 灰色(クリック抑止板用) */
+.GrayBackColor {
+    background-color: rgba(110, 110, 110, 0.4);
 }
 /* タイトルロゴ */
 #TitleLogo {
@@ -586,7 +650,7 @@ body {
 /* 白フェードアウトアニメ */
 .FadeOutWhiteOverAnim {
     animation-name: fadeOutWhiteOverAnim;
-    animation-duration: 1s; 
+    animation-duration: 0.5s; 
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
@@ -601,7 +665,7 @@ body {
 /* 白フェードインアニメ */
 .FadeInWhiteOverAnim {
     animation-name: fadeInWhiteOverAnim;
-    animation-duration: 1s; 
+    animation-duration: 0.5s; 
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
@@ -618,7 +682,7 @@ body {
     pointer-events: auto;
     position: absolute;
     top: 273px;
-    left: 57px;
+    left: 64px;
     width: 300px;
     height: 130px;
     border-radius: 8px;
@@ -671,8 +735,6 @@ body {
 #DeleteConfirmText.InactivePopupWindow #CancelText {
     display: none;
 }
-
-
 
 /* transformテスト */
 .transform {

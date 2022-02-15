@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>オトミエ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/destyle.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="styles/destyle.min.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
@@ -20,7 +20,6 @@
         </div>
         <div id="AppLogoGrp" class="FadeOutAppLogo">
             <img src="images/AppLogo.png" alt="" id="AppLogoImage">
-            <!-- <div id="SplashAppText">オトミエ</div> -->
             <div id="VersionText">Ver.β</div>
         </div>
     </div>
@@ -50,14 +49,14 @@
     <!-- 収録画面 -->
     <div id="RecWindow" class="Window">
         <div id="TitleLogoRec"></div>
-        <div id="CanvasRealTime"></div>
-        <div id="CanvasWaveFormRec"></div>
+        <canvas id="CanvasRealTime"></canvas>
+        <canvas id="CanvasWaveFormRec"></canvas>
         <div id="RecBottomCover">
             <div id="ButtonStartRecBack">
                  <!-- ↓クラスの付け替えで状態(NormalRecBtn StartRecBtn)切り替え -->
                 <div id="ButtonStartRec" class="NormalRecBtn">
                     <div id="RecCountTextBack">
-                        <div id="RecCountText">5</div>
+                        <div id="RecCountText"></div>
                     </div>
                 </div>
             </div>
@@ -69,8 +68,8 @@
         <!-- ↓クラスの付け替えで状態(RecNow RecFinish RecIcon RecPlayer)切り替え -->
         <div id="RecContainer" class="RecNow">
             <div id="WhiteFadePanelPlay"></div>
-            <div id="CanvasRecMovie"></div>
-            <div id="CanvasWaveFormPlay"></div>
+            <canvas id="CanvasRecMovie"></canvas>
+            <canvas id="CanvasWaveFormPlay"></canvas>
             <div id="RecDateTime"><img src="images/TimeIcon.png"></i> 2022年12月22日 12:35</div>
             <div id="RecLocation"><img src="images/LocationIcon.png"></i> 港区南麻布三丁目</div>        
             <div id="PlayBottomCover">
@@ -88,6 +87,7 @@
     <!-- 画面上側UI -->
     <div id="OverWindow" class="Window">
         <div id="TitleLogo"><img src="images/TitleLogo.png"></div>
+        <div id="ClickDefence" class="Displaynone"></div>
         <div id="WhiteFadePanelOver"></div>
         <!-- ↓クラスの付け替えで状態(InactivePopupWindow ActivePopupWindow)切り替え -->   
         <div id="DeleteConfirmText" class="InactivePopupWindow">収録データを削除しますか？
@@ -96,8 +96,9 @@
         </div>
     </div>
 
-    <!-- <script src="app.js"></script> -->
-    <script src="script.js"></script>
+    <script src="script/voice_analyse.js"></script>
+    <script src="script/app.js"></script>
+    <script src="script/UIManager.js"></script>
 </body>
 
 </html>

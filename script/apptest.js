@@ -125,13 +125,17 @@ const recording = ({
     // ・
     // ・    
     console.log("recording");
-    let recordingTime = 0;
+    let recordingTime = -1;
 
     if (onReady && typeof onReady === "function") {
         onReady(true);
     }
     if (onProcess && typeof onProcess === "function") {
-        onProcess(recordingTime);
+        onProcess(1);
+        onProcess(2);
+        onProcess(3);
+        onProcess(4);
+        onProcess(5);
     }
     if (onComplete && typeof onComplete === "function") {
         onComplete(true);
@@ -183,7 +187,7 @@ const play = ({
 }
 
 
-const stopPlay = ({
+const stopPlaying = ({
     onReady = () => { },
     onComplete = () => { },
 }) => {
@@ -192,7 +196,7 @@ const stopPlay = ({
     // ・
     // ・
 
-    console.log("stopPlay");
+    console.log("stopPlaying");
     if (onReady && typeof onReady === "function") {
         onReady(true);
     }
