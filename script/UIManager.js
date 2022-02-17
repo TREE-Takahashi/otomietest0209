@@ -12,13 +12,13 @@ document.addEventListener('mousewheel', disableScroll, { passive: false });
 // スプラッシュ画面
 {
     // スプラッシュ画面 - アニメ終わりで非表示して次へ
-    const appLogoGrp = document.querySelector('.FadeOutAppLogo');
+    const splashImageGrp = document.querySelector('#SplashImageGrp');
     const splashWindow = document.querySelector('#SplashWindow');
 
     const splashNone = () => {
         splashWindow.classList.add('Displaynone');
     };
-    appLogoGrp.addEventListener('animationend', splashNone);
+    splashImageGrp.addEventListener('animationend', splashNone);
 }
 
 // getArchiveステート判別用

@@ -15,13 +15,9 @@
 <body>
     <!-- スプラッシュ画面 -->
     <div id="SplashWindow" class="Window">
-        <div id="BrandGrp" class="FadeOutBrand">
-            <img src="images/Realize.png" alt="事業部ロゴ画像" id="RealizeImage">
-            <img src="images/Tree.png" alt="会社ロゴ画像" id="TreeImage">
-        </div>
-        <div id="AppLogoGrp" class="FadeOutAppLogo">
+        <div id="SplashImageGrp" class="FadeOutSplash">
             <img src="images/AppLogo.png" alt="アプリロゴ画像" id="AppLogoImage">
-            <div id="VersionText">Ver.β</div>
+            <img src="images/TreeRealize.png" alt="会社・事業部ロゴ画像" id="TreeRealizeImage">
         </div>
     </div>
 
@@ -50,8 +46,11 @@
     <!-- 収録画面 -->
     <div id="RecWindow" class="Window">
         <div id="TitleLogoRec"></div>
-        <div id="VisualRealTime"></div>
-        <canvas id="CanvasRealTime"></canvas>
+        <img src="images/Graphic.png" alt="チェック用" id="GraphicRec">
+        <!-- <div id="VisualRealTime"></div>
+        <canvas id="CanvasRealTime"> -->
+        <!-- </canvas> -->
+        <img src="images/wave.png" alt="チェック用" id="CanvasWaveFormRec">
         <canvas id="CanvasWaveFormRec"></canvas>
         <div id="RecBottomCover">
             <div id="ButtonStartRecBack">
@@ -70,8 +69,10 @@
         <!-- ↓クラスの付け替えで状態(RecNow RecFinish RecIcon RecPlayer)切り替え -->
         <div id="RecContainer" class="RecNow">
             <div id="WhiteFadePanelPlay"></div>
-            <div id="CanvasRecMovie"></div>
-            <canvas id="CanvasWaveFormPlay"></canvas>
+            <!-- <div id="CanvasRecMovie"></div> -->
+            <img src="images/Graphic.png" alt="チェック用" id="CanvasRecMovie">
+            <!-- <canvas id="CanvasWaveFormPlay"></canvas> -->
+            <img src="images/wave.png" alt="チェック用" id="CanvasWaveFormPlay">
             <div id="RecDateTime"><img src="images/TimeIcon.png"></i> 2022年12月22日 12:35</div>
             <div id="RecLocation"><img src="images/LocationIcon.png"></i> 港区南麻布三丁目</div>
             <div id="PlayBottomCover">

@@ -2,7 +2,11 @@
 
 /* 位置、組み、サイズ、形、線、色 */
 
-
+/*  */
+#Graphic {
+    width: 100%;
+    height: 100%;
+}
 body {
     position: relative;
 
@@ -22,10 +26,6 @@ body {
     height: 926px;
 }
 
-/* 一瞬で非表示にする用クラス */
-/* .Collapse {
-    visibility: collapse;
-} */
 /*-- 非表示用クラス --*/
 .Displaynone {
     display: none;
@@ -38,96 +38,30 @@ body {
     text-align: center;
     z-index: 50;
 }
-
-#RealizeImage {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-    width: 300px;
-    height: 170px;
-}
-
-#TreeImage {
-    position: absolute;
-    bottom: 30px;
-    right: 0;
-    left: 0;
-    margin: auto;
-    width: 140px;
-    height: 50px;
-}
-
 #AppLogoImage {
     position: absolute;
-    top: 400px;
-    right: 0;
-    left: 0;
-    margin: auto;
-    width: 130px;
-    height: 130px;
+    top: 320px;
+    left: 119px;
+    width: 190px;
+    height: 190px;
 }
-
-#VersionText {
+#TreeRealizeImage {
     position: absolute;
-    bottom: 3px;
-    left: 57px;
-    margin: 0 auto 0 auto;
-    height: 50px;
-    width: 300px;
-    font-family: sans-serif;
-    font-weight: 100;
-    font-size: 18px;
-    letter-spacing: 0.12em;
-    color: rgb(0, 0, 0);
+    bottom: 46.3px;
+    left: 0;
+    width: 428px;
+    height: 40px;
 }
-
-/* .FadeOut {
+/* Splash画面画像フェードアウト */
+.FadeOutSplash {
     animation-name: fadeOutSplash;
-    animation-duration: 2s;
-    animation-timing-function: 1s;
-    animation-delay: 1s;
-    animation-fill-mode: forwards;
-} */
-.FadeOutBrand {
-    animation-name: fadeOutBrand;
-    /* 1:2の関係 ここは1 */
-    animation-duration: 0.5s;
+    animation-duration: 1.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
-
-@keyframes fadeOutBrand {
-    0%, 50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        visibility: collapse;
-    }
-}
-
-.FadeOutAppLogo {
-    animation-name: fadeOutAppLogo;
-    /* 1:2の関係 ここは2 */
-    animation-duration: 1s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes fadeOutAppLogo {
-    0%, 45% {
-        opacity: 0;
-    }
-
-    55% {
-        opacity: 1;
-    }
-
-    75% {
+/* スプラッシュ画面フェードアウトアニメ */
+@keyframes fadeOutSplash {
+    0%, 40% {
         opacity: 1;
     }
 
@@ -209,7 +143,7 @@ body {
 }
 
 /* 収録画面のグラフィックの親 */
-#CanvasRealTime {
+#GraphicRec {
     position: absolute;
     bottom: 418px;
     left: 44px;
@@ -217,7 +151,7 @@ body {
     height: 340px;
     border-radius: 30px;
     overflow: hidden;
-    opacity: 0.5;
+    /* opacity: 0.5; */
 }
 
 /* 収録画面のグラフィック */
@@ -226,16 +160,16 @@ body {
     height: 100%;
 }
 
-#VisualRealTime {
+/* #VisualRealTime {
     position: absolute;
     bottom: 418px;
     left: 44px;
     width: 340px;
     height: 340px;
     border-radius: 30px;
-    background-color: rgb(194, 194, 194);
-    overflow: hidden;
-}
+    /* background-color: rgb(194, 194, 194); */
+    /* overflow: hidden;
+} */ 
 
 #VisualRealTime>canvas {
     width: 100%;
