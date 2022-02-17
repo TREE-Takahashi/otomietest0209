@@ -1,5 +1,7 @@
 'use strict';
 
+const otomieVisual = new OtomieVisual();
+
 // スクロールを禁止にする関数
 function disableScroll(event) {
     event.preventDefault();
@@ -56,12 +58,16 @@ const clickedMicOnCard = () => {
 micOnCard.addEventListener('click', clickedMicOnCard);
 
 const canvasRealTime = document.getElementById('CanvasRealTime');
+const visualRealTime = document.getElementById('VisualRealTime');
+
 // micOnコールバック
 const micOnCallBack = {
     onReady: (tf) => {
         if (tf == true) {
             console.log("UI通知-micOn-マイクアクセスが許可されました〇");
             drawRealTime(canvasRealTime, drawRealTimeCallBack); //リアルタイム描画開始呼ぶ
+            otomieVisual.setup(visualRealTime, 1024, 1024);
+            otomieVisual.play();
         }
         else {
             console.log("UI通知-micOn-マイクアクセスが許可されませんでした×");
@@ -420,20 +426,34 @@ const stopPlayingCallBack = {
 
 // 白フェード中等でクリックイベント抑止
 const clickDefence = document.getElementById('ClickDefence');
-const defenceClick =()=> {
+const defenceClick = () => {
     clickDefence.classList.remove('Displaynone');
 };
-const removeDefenceClick =()=> {
+const removeDefenceClick = () => {
     clickDefence.classList.add('Displaynone');
 };
 // クリック抑止板を灰色にするだけの関数
-const grayBackColor =()=> {
+const grayBackColor = () => {
     clickDefence.classList.add('GrayBackColor');
 };
-const removeGrayBackColor =()=> {
+const removeGrayBackColor = () => {
     clickDefence.classList.remove('GrayBackColor');
 };
 
+
+// タッチ操作での拡大縮小禁止
+function no_scaling() {
+    document.addEventListener("touchmove", mobile_no_scroll, { passive: false });
+}
+no_scaling();
+// 拡大縮小禁止
+function mobile_no_scroll(event) {
+    // ２本指での操作の場合
+    if (event.touches.length >= 2) {
+        // デフォルトの動作をさせない
+        event.preventDefault();
+    }
+}
 
 
 // テスト用
@@ -461,24 +481,3 @@ function keypress_ivent(e) {
 }
 
 
-
-
-/**
-* タッチ操作での拡大縮小禁止
-*/
-function no_scaling() {
-    document.addEventListener("touchmove", mobile_no_scroll, { passive: false });
-}
-
-no_scaling();
-
-/**
-* 拡大縮小禁止
-*/
-function mobile_no_scroll(event) {
-    // ２本指での操作の場合
-    if (event.touches.length >= 2) {
-        // デフォルトの動作をさせない
-        event.preventDefault();
-    }
-}

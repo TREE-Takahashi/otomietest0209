@@ -47,16 +47,17 @@ const micOn = ({
     console.log("micON called");
 
     //マイクをONにする処理
-    startCollecting();
+    setCallBack(micOnCB,{onReady,onComplete});
+    startCollecting(micOnCB);
 
-    if (onReady && typeof onReady === "function") {
-        console.log("onReady && typeof onReady ");
-        onReady(true);
+    // if (onReady && typeof onReady === "function") {
+    //     console.log("onReady && typeof onReady ");
+    //     onReady(true);
 
-    }
-    if (onComplete && typeof onComplete === "function") {
-        onComplete(true);
-    }
+    // }
+    // if (onComplete && typeof onComplete === "function") {
+    //     onComplete(true);
+    // }
 }
 
 // drawRealTime(_canvas, { onReady, onProcess, onComplete });
@@ -72,8 +73,16 @@ const drawRealTime = (_canvas, {
     // ・
     // ・
     // ・
-    switchRealTime(_canvas,{onReady,onProcess,onComplete});
+    setCallBack(drawReatTimeCB,{onReady,onProcess,onComplete});
+    // setCallBack()
+    switchRealTime(_canvas,drawReatTimeCB);
     //console.log("drawRealTime:   " + drawRealTime);
+    
+    // const otimieVisual = new OtomieVisual.OtomieVisual();
+    // console.log("otimieVisual",otimieVisual);
+    // otimieVisual.init(document.querySelector("#CanvasRealTime"), 640, 640);
+    // otimieVisual.render();
+
 
     if (onReady && typeof onReady === "function") {
         onReady(true);
@@ -86,6 +95,8 @@ const drawRealTime = (_canvas, {
         onComplete(true);
     }
 }
+
+
 
 const getArchive = (_canvas,{
     onReady = () => { },
@@ -126,15 +137,9 @@ const initRec = ({
     // ・
     // ・
     console.log("initRec");
-    let completeInitRec = getPrepareRec;
+    setCallBack(initRecCB,{onReady,onComplete});
+    prepareRec(initRecCB);
 
-    if (onReady && typeof onReady === "function") {
-        onReady(true);
-    }
-    if (onComplete && typeof onComplete === "function") {
-        console.log("completeInitRec:  " + completeInitRec());
-        onComplete(completeInitRec());
-    }
 }
 
 let element;
@@ -146,8 +151,11 @@ const recording = ({
     //収録データを取得する処理
     // ・
     // ・
-    // ・    
-    startRecording({onReady,onProcess,onComplete});
+    // ・
+    setCallBack(onRecCB,{onReady,onProcess,onComplete});
+
+    //realTimeCB();
+    startRecording();
     
     if (onReady && typeof onReady === "function") {
         onReady(true);
@@ -164,6 +172,8 @@ const recording = ({
         onComplete(true);
     }
 }
+
+
 
 
 // //UIManager側
