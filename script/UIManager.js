@@ -41,7 +41,7 @@ const clickedConceptCard = () => {
     sliderContent[1].classList.add('SlideHowtoAnim01');
     sliderContent[2].classList.add('SlideHowtoAnim01');
 };
-conceptCard.addEventListener('click', clickedConceptCard);
+conceptCard.addEventListener('touchstart', clickedConceptCard);
 
 // Howto画面 - マイクの設定カードクリックで処理
 const micOnCard = document.getElementById("MicOnCard");
@@ -55,7 +55,7 @@ const changeStartCard = () => {
 const clickedMicOnCard = () => {
     micOn(micOnCallBack);
 };
-micOnCard.addEventListener('click', clickedMicOnCard);
+micOnCard.addEventListener('touchstart', clickedMicOnCard);
 
 const canvasRealTime = document.getElementById('CanvasRealTime');
 const visualRealTime = document.getElementById('VisualRealTime');
@@ -103,7 +103,7 @@ const displayNoneStartCard = () => {
     howToWindow.classList.add('Displaynone');
 };
 // はじめましょう画面クリックイベント
-startCard.addEventListener('click', clickedStartCard);
+startCard.addEventListener('touchstart', clickedStartCard);
 
 //サムネイル画像
 const thumbnailImage = document.getElementById('ThumbnailImage');
@@ -203,7 +203,7 @@ const recClick = () => {
         stopRec(CanvasRecMovie, stopRecCallBack); //収録停止
     }
 }
-buttonStartRec.addEventListener('click', recClick);
+buttonStartRec.addEventListener('touchstart', recClick);
 // initRecコールバック
 const initRecCallBack = {
     onReady: (tf) => {
@@ -325,7 +325,7 @@ const changePlayerWindowFunc = () => {
     defenceClick(); //クリック抑止
     thumbnailImage.classList.add('Displaynone'); //サムネイル画像を消す
 };
-CanvasRecMovie.addEventListener('click', changePlayerWindowFunc);
+CanvasRecMovie.addEventListener('touchstart', changePlayerWindowFunc);
 // 再生画面が再生状態になるアニメ終わったら呼ばれる
 recContainer.addEventListener('transitionend', () => {
     if (recContainer.classList.contains('RecPlayer') == true) {
@@ -359,7 +359,7 @@ const restartPlayingCallBack = {
         }
     }
 };
-btnBackToRecWindow.addEventListener('click', clickedBackToRecWindowBtn);
+btnBackToRecWindow.addEventListener('touchstart', clickedBackToRecWindowBtn);
 // 〇〇〇〇再生画面 - 右下削除ボタン押してポップアップウインドウ表示・非表示 ------------------------------------------
 const btnDeleteMovie = document.getElementById('ButtonDeleteMovie');
 const deleteConfirmText = document.getElementById('DeleteConfirmText');
@@ -379,7 +379,7 @@ const clickedDeleteConfirmBtn = () => {
         stopPlaying(stopPlayingCallBack); //停止
     }
 };
-btnDeleteMovie.addEventListener('click', clickedDeleteConfirmBtn);
+btnDeleteMovie.addEventListener('touchstart', clickedDeleteConfirmBtn);
 
 // --- キャンセル押したら非表示
 const cancelText = document.getElementById('CancelText');
@@ -389,20 +389,22 @@ const clickedCancelText = () => {
     removeGrayBackColor(); //抑止板灰色を解除
     toggleDeleteConfirm(); //ポップアップ非表示
 }
-cancelText.addEventListener('click', clickedCancelText);
+cancelText.addEventListener('touchstart', clickedCancelText);
 // 削除ボタン押されらまず呼ばれる関数
 const clickedDeleteTextBtn = () => {
     deleteData(deleteDataCallBack);
 };
 // --- 削除押したら再生画面を収録状態にする
 const deleteText = document.getElementById('DeleteText');
-deleteText.addEventListener('click', clickedDeleteTextBtn);
+deleteText.addEventListener('touchstart', clickedDeleteTextBtn);
 
+const deleteCompleteText = document.getElementById('DeleteCompleteText');
 // deleteDataコールバック
 const deleteDataCallBack = {
     onReady: (tf) => {
         if (tf == true) {
             console.log("UI通知-deleteData-削除が完了しました〇");
+            deleteCompleteText.classList.remove('Displaynone'); //削除完了通知表示
             removeDefenceClick(); //クリック抑止解除
             removeGrayBackColor(); //抑止板灰色を解除
             getArchive(CanvasRecMovie, getArchiveCallBack); //アーカイブチェック
@@ -412,6 +414,12 @@ const deleteDataCallBack = {
         }
     }
 };
+deleteCompleteText.addEventListener('transitionend', () => {
+    if (recContainer.classList.contains('Displaynone') == false) {
+        deleteCompleteText.classList.add('Displaynone'); //サムネイル画像を現す
+    }
+});
+
 
 // 〇〇〇〇再生画面 - 再生/停止ボタン押してアイコン切替 -------------------------------------------
 const btnStartPlay = document.getElementById('ButtonStartPlay');
@@ -429,7 +437,7 @@ const clickedPlayStopBtn = () => {
         stopPlaying(stopPlayingCallBack); //停止
     }
 };
-btnStartPlay.addEventListener('click', clickedPlayStopBtn);
+btnStartPlay.addEventListener('touchstart', clickedPlayStopBtn);
 // playコールバック
 const playCallBack = {
     onReady: (tf) => {
@@ -517,11 +525,6 @@ function keypress_ivent(e) {
     if (e.key === 'd' || e.key === 'D') {
         console.log('あああああああああ');
 
-        const deleteCompleteText = document.getElementById('DeleteCompleteText');
-        const visibleDeleteComplete = () => {
-            deleteCompleteText.classList.remove('Displaynone');
-        };
-        deleteCompleteText.addEventListener('click', visibleDeleteComplete);
     }
     return false;
 }

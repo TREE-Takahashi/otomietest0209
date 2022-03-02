@@ -52,6 +52,7 @@
 
     <!-- 収録画面 -->
     <div id="RecWindow" class="Window">
+        <h1 id="sampleArea">サンプル</h1>
         <div id="TitleLogoRec"></div>
         <div id="VisualRealTime"></div>
         <canvas id="CanvasRealTime"></canvas>
@@ -86,8 +87,8 @@
                     <!-- ↓クラスの付け替えで状態(PlayMovieBtn StopMovieBtn)切り替え -->
                     <div id="ButtonStartPlay" class="PlayMovieBtn"></div>
                 </div>
-                <button id="ButtonBackToRecWindow"><i class="fa fa-arrow-left"></i></button>
-                <button id="ButtonDeleteMovie"><i class="fa fa-ellipsis-v"></i></button>
+                <div id="ButtonBackToRecWindow"><i class="fa fa-arrow-left"></i></div>
+                <div id="ButtonDeleteMovie"><i class="fa fa-ellipsis-v"></i></div>
             </div>
         </div>
     </div>
@@ -99,10 +100,10 @@
         <div id="WhiteFadePanelOver"></div>
         <!-- ↓クラスの付け替えで状態(InactivePopupWindow ActivePopupWindow)切り替え -->
         <div id="DeleteConfirmText" class="InactivePopupWindow">収録データを削除しますか？
-            <button id="DeleteText">削除</button>
-            <button id="CancelText">キャンセル</button>
+            <div id="DeleteText">削除</div>
+            <div id="CancelText">キャンセル</div>
         </div>
-        <!-- <div id="DeleteCompleteText" class="">収録データを削除しました</div> -->
+        <div id="DeleteCompleteText" class="Displaynone">収録データを削除しました</div>
     </div>
 
     <script src="script/otomie-visual.js"></script>
