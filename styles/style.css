@@ -52,18 +52,19 @@ body {
 /* Splash画面画像フェードアウト */
 .FadeOutSplash {
     animation-name: fadeOutSplash;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
-    animation-iteration-count: 30;
 }
 /* スプラッシュ画面フェードアウトアニメ */
 @keyframes fadeOutSplash {
-    0% {
-        opacity: 0;
-    }
-    100% {
+    0%, 40% {
         opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: collapse;
     }
 }
 
@@ -138,8 +139,24 @@ body {
     left: 0px;
     width: 428px;
     height: 25px;
+    animation-name: howtoNextAnim;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 30;
 }
-
+@keyframes howtoNextAnim {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+        transform: scale(0.95, 0.95);
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 
 /*-------------------- 収録画面 -----------------------*/
