@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- アドレスバー非表示 -->
+    <meta name="viewport" content="minimal-ui" />
+    
     <title>オトミエ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="styles/destyle.min.css">
@@ -46,12 +48,10 @@
     <!-- 収録画面 -->
     <div id="RecWindow" class="Window">
         <div id="TitleLogoRec"></div>
-        <img src="images/Graphic.png" alt="チェック用" id="GraphicRec">
-        <!-- <div id="VisualRealTime"></div>
-        <canvas id="CanvasRealTime"> -->
-        <!-- </canvas> -->
-        <img src="images/wave.png" alt="チェック用" id="CanvasWaveFormRec">
+        <div id="VisualRealTime"></div>
+        <canvas id="CanvasRealTime"></canvas>
         <canvas id="CanvasWaveFormRec"></canvas>
+        <canvas id="fpsCanvas" width="200" height="100"></canvas>
         <div id="RecBottomCover">
             <div id="ButtonStartRecBack">
                 <!-- ↓クラスの付け替えで状態(NormalRecBtn StartRecBtn)切り替え -->
@@ -62,6 +62,8 @@
                 </div>
             </div>
         </div>
+        <div id="ThumbnailImage" class="Displaynone"></div>
+
     </div>
 
     <!-- 再生中画面 -->
@@ -69,12 +71,10 @@
         <!-- ↓クラスの付け替えで状態(RecNow RecFinish RecIcon RecPlayer)切り替え -->
         <div id="RecContainer" class="RecNow">
             <div id="WhiteFadePanelPlay"></div>
-            <!-- <div id="CanvasRecMovie"></div> -->
-            <img src="images/Graphic.png" alt="チェック用" id="CanvasRecMovie">
-            <!-- <canvas id="CanvasWaveFormPlay"></canvas> -->
-            <img src="images/wave.png" alt="チェック用" id="CanvasWaveFormPlay">
+            <div id="CanvasRecMovie"></div>
+            <canvas id="CanvasWaveFormPlay"></canvas>
             <div id="RecDateTime"><img src="images/TimeIcon.png"></i> 2022年12月22日 12:35</div>
-            <div id="RecLocation"><img src="images/LocationIcon.png"></i> 港区南麻布三丁目</div>
+            <div id="RecLocation"><img src="images/LocationIcon.png"></i> 東京ビッグサイト 南展示棟</div>
             <div id="PlayBottomCover">
                 <div id="ButtonStartPlayBack">
                     <!-- 再生/停止ボタン -->
@@ -89,7 +89,7 @@
 
     <!-- 画面上側UI -->
     <div id="OverWindow" class="Window">
-        <div id="TitleLogo"><img src="images/TitleLogo.png"></div>
+        <img src="images/TitleLogo.png" id="TitleLogo">
         <div id="ClickDefence" class="Displaynone"></div>
         <div id="WhiteFadePanelOver"></div>
         <!-- ↓クラスの付け替えで状態(InactivePopupWindow ActivePopupWindow)切り替え -->
@@ -97,6 +97,7 @@
             <div id="DeleteText">削除</div>
             <div id="CancelText">キャンセル</div>
         </div>
+        <!-- <div id="DeleteCompleteText" class="">収録データを削除しました</div> -->
     </div>
 
     <script src="script/otomie-visual.js"></script>

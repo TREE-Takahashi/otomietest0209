@@ -59,13 +59,14 @@ micOnCard.addEventListener('click', clickedMicOnCard);
 
 const canvasRealTime = document.getElementById('CanvasRealTime');
 const visualRealTime = document.getElementById('VisualRealTime');
+const canvasWaveFormRec = document.getElementById('CanvasWaveFormRec');
 
 // micOnコールバック
 const micOnCallBack = {
     onReady: (tf) => {
         if (tf == true) {
             console.log("UI通知-micOn-マイクアクセスが許可されました〇");
-            drawRealTime(canvasRealTime, drawRealTimeCallBack); //リアルタイム描画開始呼ぶ
+            drawRealTime(canvasRealTime, canvasWaveFormRec, canvasWaveFormPlay, drawRealTimeCallBack); //リアルタイム描画開始呼ぶ
             otomieVisual.setup(visualRealTime, 1024, 1024);
             otomieVisual.play();
         }
@@ -104,6 +105,13 @@ const displayNoneStartCard = () => {
 // はじめましょう画面クリックイベント
 startCard.addEventListener('click', clickedStartCard);
 
+//サムネイル画像
+const thumbnailImage = document.getElementById('ThumbnailImage');
+let thumbnailSrc; //サムネイル画像のデータ変数
+// サムネイル画像を入れ替える関数
+const changethumbnail = (thumbnailSrc) => {
+    thumbnailImage.style.backgroundImage =  thumbnailSrc;
+};
 // getArchiveコールバック
 const getArchiveCallBack = {
     getNum: (num) => {
@@ -126,10 +134,17 @@ const getArchiveCallBack = {
                 nowState == State.isRecorded; //収録完了ステートに切替
             }
         }
+    },
+    getImage: (thumbnailImg) => {
+        console.log('UI通知-getArchive-サムネイル画像を入れます');
+        CanvasRecMovie.style.backgroundImage =  "url(" + thumbnailImg + ")";
+        thumbnailSrc =  "url(" + thumbnailImg + ")"; //サムネイル画像のデータ変数差し替え
+        if (CanvasRecMovie.hasChildNodes() == true) { //子要素がいるなら
+            console.log('UI通知-CanvasRecMovieは子要素持っている');
+            CanvasRecMovie.firstChild.classList.add('Displaynone'); //CanvasRecMovieの子を見た目OFF
+        }
     }
 };
-
-
 
 // 再生画面 - 状態(見た目)切り替え関数 ---↓↓↓↓↓↓↓↓↓↓↓↓---------------------------------------------------------
 const recContainer = document.getElementById('RecContainer');
@@ -185,7 +200,7 @@ const recClick = () => {
         initRec(initRecCallBack);
     } else { //収録中なら
         console.log('ストップ押された');
-        stopRec(stopRecCallBack); //収録停止
+        stopRec(CanvasRecMovie, stopRecCallBack); //収録停止
     }
 }
 buttonStartRec.addEventListener('click', recClick);
@@ -216,8 +231,15 @@ const recordingCallBack = {
     },
     onProcess: (recCount) => {
         // 時間をテキストに入れる
-        recCountText.textContent = (countUI - recCount).toFixed(0);
-        // recCountText.textContent = recCount.toFixed(0);
+        recCountText.textContent = Math.floor(countUI - recCount);
+    },
+    onComplete: (tf) => {
+        if (tf == true) {
+            console.log("UI通知-recording-収録時間が終了しました〇");
+            recClick();
+        } else {
+            console.log("UI通知-recording-収録時間が終了できませんでした×");
+        }
     }
 };
 // stopRecコールバック
@@ -286,6 +308,8 @@ recContainer.addEventListener('transitionend', () => {
     if (recContainer.classList.contains('RecIcon') == true) {
         console.log('UI通知- 操作できない解除')
         removeDefenceClick(); // 画面操作を受け付けない処理を解除
+        changethumbnail(thumbnailSrc); //サムネイル画像の中身入れ替える
+        thumbnailImage.classList.remove('Displaynone'); //サムネイル画像を現す
     }
 });
 // 〇〇〇〇収録画面 - 収録ボタン関連処理 ---↑↑↑↑↑↑↑↑↑↑↑↑-----------------------------------------------------
@@ -296,8 +320,10 @@ recContainer.addEventListener('transitionend', () => {
 const CanvasRecMovie = document.getElementById('CanvasRecMovie');
 let isClickBtnBackToRecWindow = false; //戻るボタン押されたフラグ　押されたらtrue,再生画面に遷移してきたときfalse
 const changePlayerWindowFunc = () => {
+    console.log('UI通知-再生画面に切替');
     changeRecPlayer(); //再生画面を再生状態に
     defenceClick(); //クリック抑止
+    thumbnailImage.classList.add('Displaynone'); //サムネイル画像を消す
 };
 CanvasRecMovie.addEventListener('click', changePlayerWindowFunc);
 // 再生画面が再生状態になるアニメ終わったら呼ばれる
@@ -314,10 +340,23 @@ const btnBackToRecWindow = document.getElementById('ButtonBackToRecWindow');
 const clickedBackToRecWindowBtn = () => {
     nowState = State.isClickedReturn; //戻るボタン押されたステートに切替
     defenceClick(); //クリック抑止
-    if (!isSaveDataPlay) { //再生中でないなら
-        getArchive(CanvasRecMovie, getArchiveCallBack); //アーカイブチェック
-    } else { //再生中なら
-        stopPlaying(stopPlayingCallBack); //停止
+    restartPlaying(restartPlayingCallBack); //再生位置をリセット&再生止める
+};
+// restartPlayingコールバック
+const restartPlayingCallBack = {
+    onComplete: (tf) => {
+        if (tf == true) {
+            console.log("UI通知-restartPlaying-再生位置リセット&再生停止が完了しました〇");
+            if (!isSaveDataPlay) { //再生中でないなら
+                getArchive(CanvasRecMovie, getArchiveCallBack); //アーカイブチェック
+            } else { //再生中なら
+                changeMovieBtnIcon(); //再生停止アイコン切替関数
+                isSaveDataPlay = false; //再生中フラグOFF
+                getArchive(CanvasRecMovie, getArchiveCallBack); //アーカイブチェック
+            }
+        } else {
+            console.log("UI通知-restartPlaying-再生位置リセット&再生停止が完了できませんでした×");
+        }
     }
 };
 btnBackToRecWindow.addEventListener('click', clickedBackToRecWindowBtn);
@@ -380,6 +419,8 @@ const changeMovieBtnIcon = () => {
     btnStartPlay.classList.toggle('PlayMovieBtn');
     btnStartPlay.classList.toggle('StopMovieBtn');
 };
+
+const canvasWaveFormPlay = document.getElementById('CanvasWaveFormPlay');
 // 〇〇〇〇再生画面 - 再生/停止ボタン押されたらまず呼ばれる関数
 const clickedPlayStopBtn = () => {
     if (!isSaveDataPlay) { //再生中でないなら
@@ -396,6 +437,10 @@ const playCallBack = {
             console.log("UI通知-play-再生が開始されました〇");
             changeMovieBtnIcon(); //アイコン切替関数
             isSaveDataPlay = true; //再生中フラグON
+            if (CanvasRecMovie.firstChild.classList.contains('Displaynone') == true) {
+                CanvasRecMovie.firstChild.classList.remove('Displaynone'); //CanvasRecMovieの子を見た目ON
+            }
+
         }
         else {
             console.log("UI通知-play-再生が開始できませんでした×");
@@ -407,14 +452,9 @@ const stopPlayingCallBack = {
     onReady: (tf) => {
         if (tf == true) {
             console.log("UI通知-stopPlaying-再生が停止されました〇");
-            changeMovieBtnIcon(); //アイコン切替関数
             isSaveDataPlay = false; //再生中フラグOFF
-            // もし戻るボタンが押されていたら
-            if (nowState == State.isClickedReturn) {
-                nowState = State.isClickedReturn; //戻るボタン押されたステートに切替
-                getArchive(CanvasRecMovie, getArchiveCallBack); //アーカイブチェック
-            } else if (nowState == State.isClickedDelete) { // もし削除確認ボタンが押されていたら
-                changeMovieBtnIcon(); //アイコン切替関数
+            changeMovieBtnIcon(); //アイコン切替関数
+            if (nowState == State.isClickedDelete) {
                 toggleDeleteConfirm(); //削除確認ウインドウ表示
             }
         }
@@ -475,9 +515,19 @@ function keypress_ivent(e) {
         recContainer.classList.add('RecIcon');
     }
     if (e.key === 'd' || e.key === 'D') {
-        console.log(isRecPlay);
+        console.log('あああああああああ');
+
+        const deleteCompleteText = document.getElementById('DeleteCompleteText');
+        const visibleDeleteComplete = () => {
+            deleteCompleteText.classList.remove('Displaynone');
+        };
+        deleteCompleteText.addEventListener('click', visibleDeleteComplete);
     }
     return false;
 }
 
 
+
+
+// 呼ばれたタイミングでCanvasの子要素のcssを削除
+//

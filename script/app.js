@@ -46,24 +46,14 @@ const micOn = ({
 } = {}) => {
     console.log("micON called");
 
-    //マイクをONにする処理
-    setCallBack(micOnCB,{onReady,onComplete});
-    startCollecting(micOnCB);
-
-    // if (onReady && typeof onReady === "function") {
-    //     console.log("onReady && typeof onReady ");
-    //     onReady(true);
-
-    // }
-    // if (onComplete && typeof onComplete === "function") {
-    //     onComplete(true);
-    // }
+    //マイクをONにする処理  
+    startCollecting({ onReady, onComplete });
 }
 
 // drawRealTime(_canvas, { onReady, onProcess, onComplete });
 // play(_canvas, { onReady, onProcess, onComplete });
 
-const drawRealTime = (_canvas, {
+const drawRealTime = (_canvas, _canvasTL, _canvasPB, {
     onReady = () => { },
     onProcess = () => { },
     onComplete = () => { },
@@ -72,33 +62,31 @@ const drawRealTime = (_canvas, {
     //リアルタイム描画する処理
     // ・
     // ・
-    // ・
-    setCallBack(drawReatTimeCB,{onReady,onProcess,onComplete});
+
     // setCallBack()
-    switchRealTime(_canvas,drawReatTimeCB);
+
+    switchRealTime(_canvas, _canvasTL, { onReady, onProcess, onComplete });
     //console.log("drawRealTime:   " + drawRealTime);
-    
+    initCanvasPB(_canvasPB);
     // const otimieVisual = new OtomieVisual.OtomieVisual();
     // console.log("otimieVisual",otimieVisual);
     // otimieVisual.init(document.querySelector("#CanvasRealTime"), 640, 640);
     // otimieVisual.render();
 
 
-    if (onReady && typeof onReady === "function") {
-        onReady(true);
-    }
-    if (onProcess && typeof onProcess === "function") {
-        onProcess(isDrawRealTime);
+    // if (onReady && typeof onReady === "function") {
+    //     onReady(true);
+    // }
+    // if (onProcess && typeof onProcess === "function") {
+    //     onProcess(isDrawRealTime);
 
-    }
-    if (onComplete && typeof onComplete === "function") {
-        onComplete(true);
-    }
+    // }
+    // if (onComplete && typeof onComplete === "function") {
+    //     onComplete(true);
+    // }
 }
 
-
-
-const getArchive = (_canvas,{
+const getArchive = (_canvas, {
     onReady = () => { },
     getNum = () => { },
     getImage = () => { },
@@ -106,25 +94,33 @@ const getArchive = (_canvas,{
 } = {}) => {
 
     //収録データを取得する処理
-    // ・
-    // ・
-    // ・
+    console.log("_canvas", _canvas);
     console.log("サムネイル用キャンバスに描画");
     console.log("getArchive");
 
-
-    if (onReady && typeof onReady === "function") {
+    if (playingData !== null) {
         onReady(true);
-    }
-    if (onReady && typeof onReady === "function") {
+
         getNum(getNumPlayingData());
-    }
-    if (onComplete && typeof onComplete === "function") {
-        getImage(getThumbnail());
-    }
-    if (onComplete && typeof onComplete === "function") {
+        if (thumbnail !== null) {
+            getImage(thumbnail);
+        }
         onComplete(true);
+
     }
+
+    // if (onReady && typeof onReady === "function") {
+    //     onReady(true);
+    // }
+    // if (onReady && typeof onReady === "function") {
+    //     getNum(getNumPlayingData());
+    // }
+    // if (onComplete && typeof onComplete === "function") {
+    //     // getImage(getThumbnail());
+    // }
+    // if (onComplete && typeof onComplete === "function") {
+    //     onComplete(true);
+    // }
 }
 
 const initRec = ({
@@ -137,12 +133,12 @@ const initRec = ({
     // ・
     // ・
     console.log("initRec");
-    setCallBack(initRecCB,{onReady,onComplete});
-    prepareRec(initRecCB);
+    // setCallBack(initRecCB,{onReady,onComplete});
+    prepareRec({ onReady, onComplete });
 
 }
 
-let element;
+
 const recording = ({
     onReady = () => { },
     onProcess = () => { },
@@ -152,25 +148,12 @@ const recording = ({
     // ・
     // ・
     // ・
-    setCallBack(onRecCB,{onReady,onProcess,onComplete});
+    // setCallBack(onRecCB,{onReady,onProcess,onComplete});
 
     //realTimeCB();
-    startRecording();
-    
-    if (onReady && typeof onReady === "function") {
-        onReady(true);
-    }
-    if (onProcess && typeof onProcess === "function") {
-        // onProcess(recTime);
-        // onProcess(1);
-        // onProcess(2);
-        // onProcess(3);
-        // onProcess(4);
-        // onProcess(5);
-    }
-    if (onComplete && typeof onComplete === "function") {
-        onComplete(true);
-    }
+
+    startRecording({ onReady, onProcess, onComplete });
+
 }
 
 
@@ -186,7 +169,7 @@ const recording = ({
 
 
 
-const stopRec = ({
+const stopRec = (_canvas,{
     onReady = () => { },
     onComplete = () => { },
 }) => {
@@ -195,15 +178,15 @@ const stopRec = ({
     // ・
     // ・
     // ・
-    stopRecording();
+    stopRecording(_canvas,{ onReady, onComplete });
     console.log("stopRec");
 
-    if (onReady && typeof onReady === "function") {
-        onReady(true);
-    }
-    if (onComplete && typeof onComplete === "function") {
-        onComplete(true);
-    }
+    // if (onReady && typeof onReady === "function") {
+    //     onReady(true);
+    // }
+    // if (onComplete && typeof onComplete === "function") {
+    //     onComplete(true);
+    // }
 
 }
 
@@ -218,17 +201,18 @@ const play = (_canvas, {
     // ・
     // ・
     console.log("play");
-    playDataList(_canvas);
-    if (onReady && typeof onReady === "function") {
-        onReady(true);
-    }
-    if (onProcess && typeof onProcess === "function") {
-        onProcess(isPlaying);
-    }
 
-    if (onComplete && typeof onComplete === "function") {
-        onComplete(true);
-    }
+    playDataList(_canvas, { onReady, onProcess, onComplete });
+    // if (onReady && typeof onReady === "function") {
+    //     onReady(true);
+    // }
+    // if (onProcess && typeof onProcess === "function") {
+    //     onProcess(isPlaying);
+    // }
+
+    // if (onComplete && typeof onComplete === "function") {
+    //     onComplete(true);
+    // }
 
 }
 
@@ -241,16 +225,36 @@ const stopPlaying = ({
     // ・
     // ・
     // ・
-    stopDataList();
+    stopDataList({ onReady, onComplete });
     console.log("stopPlay");
-    if (onReady && typeof onReady === "function") {
-        onReady(true);
-    }
+    // if (onReady && typeof onReady === "function") {
+    //     onReady(true);
+    // }
 
-    if (onComplete && typeof onComplete === "function") {
-        onComplete(true);
-    }
+    // if (onComplete && typeof onComplete === "function") {
+    //     onComplete(true);
+    // }
 }
+
+const restartPlaying = ({
+    onReady = () => { },
+    onComplete = () => { },
+}) => {
+    //再生停止する処理
+    // ・
+    // ・
+    // ・
+    restartDataList({ onReady, onComplete });
+    console.log("stopPlay");
+    // if (onReady && typeof onReady === "function") {
+    //     onReady(true);
+    // }
+
+    // if (onComplete && typeof onComplete === "function") {
+    //     onComplete(true);
+    // }
+}
+
 
 
 const deleteData = ({
@@ -264,13 +268,13 @@ const deleteData = ({
     // ・
 
     console.log("deleteData");
-    deletePlayingData();
-    if (onReady && typeof onReady === "function") {
-        onReady(true);
-    }
+    deletePlayingData({ onReady, onComplete });
+    // if (onReady && typeof onReady === "function") {
+    //     onReady(true);
+    // }
 
-    if (onComplete && typeof onComplete === "function") {
-        onComplete(true);
-    }
+    // if (onComplete && typeof onComplete === "function") {
+    //     onComplete(true);
+    // }
 
 }
