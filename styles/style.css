@@ -9,7 +9,6 @@ body {
     margin: 0;
     /* あとで消す */
     background-color: rgb(204, 204, 204);
-    padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* すべての画面共通の外枠 */
