@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- ステータスバー半透明 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> <!-- レンダリング領域を最大限まで広げる -->
 
-    <title>オトミエ</title>
+    <title>おとみえ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="styles/destyle.min.css">
     <link rel="stylesheet" href="styles/style.css">
@@ -32,16 +32,19 @@
             <div class="SliderContent Window">
                 <div id="ConceptCard">
                     <img src="images/Howto01.png" id="HowtoImg01">
+                    <img src="images/HowtoNext.png" class="HowtoNext">
                 </div>
             </div>
             <div class="SliderContent Window">
                 <div id="MicOnCard">
                     <img src="images/Howto02.png" id="HowtoImg02">
+                    <img src="images/HowtoNext.png" class="HowtoNext">
                 </div>
             </div>
             <div class="SliderContent Window">
                 <div id="StartCard">
                     <img src="images/Howto03.png" id="HowtoImg03">
+                    <img src="images/HowtoNext.png" class="HowtoNext">
                 </div>
             </div>
         </div>
@@ -83,8 +86,8 @@
                     <!-- ↓クラスの付け替えで状態(PlayMovieBtn StopMovieBtn)切り替え -->
                     <div id="ButtonStartPlay" class="PlayMovieBtn"></div>
                 </div>
-                <div id="ButtonBackToRecWindow"><i class="fa fa-arrow-left"></i></div>
-                <div id="ButtonDeleteMovie"><i class="fa fa-ellipsis-v"></i></div>
+                <button id="ButtonBackToRecWindow"><i class="fa fa-arrow-left"></i></button>
+                <button id="ButtonDeleteMovie"><i class="fa fa-ellipsis-v"></i></button>
             </div>
         </div>
     </div>
@@ -96,8 +99,8 @@
         <div id="WhiteFadePanelOver"></div>
         <!-- ↓クラスの付け替えで状態(InactivePopupWindow ActivePopupWindow)切り替え -->
         <div id="DeleteConfirmText" class="InactivePopupWindow">収録データを削除しますか？
-            <div id="DeleteText">削除</div>
-            <div id="CancelText">キャンセル</div>
+            <button id="DeleteText">削除</button>
+            <button id="CancelText">キャンセル</button>
         </div>
         <!-- <div id="DeleteCompleteText" class="">収録データを削除しました</div> -->
     </div>

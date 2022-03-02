@@ -3,12 +3,12 @@
 ◆UIManagere.js
 
 const onReady = (tf) => {
-    console.log("onReady");
+    debugLog("onReady");
     if (tf == true) {
-        console.log("minOn success");
+        debugLog("minOn success");
     }
     else {
-        console.log("micOn not sucessed");
+        debugLog("micOn not sucessed");
     }
 }
 
@@ -25,7 +25,7 @@ const micOnTouched = () => {
 
 //     document.querySelector("#TitleWindow").addEventListener("click", micOn);
 //     document.querySelector("#drawRealTime").addEventListener("click", ()=>{drawRealTime(canvasFrequency,{})});
-//     console.log("canvasFrequency:   " + canvasFrequency);
+//     debugLog("canvasFrequency:   " + canvasFrequency);
 //     document.querySelector("#getArchive").addEventListener("click", getArchive);
 //     document.querySelector("#initRec").addEventListener("click", initRec);
 //     document.querySelector("#recording").addEventListener("click", recording);
@@ -36,7 +36,7 @@ const micOnTouched = () => {
 
 //     //document.querySelector("#ButtonOpenMovie").addEventListener("click", playDataList);
 
-//     console.log("load finish");
+//     debugLog("load finish");
 // });
 
 //◆ app.js
@@ -44,7 +44,7 @@ const micOn = ({
     onReady = () => { },
     onComplete = () => { }
 } = {}) => {
-    console.log("micON called");
+    debugLog("micON called");
 
     //マイクをONにする処理  
     startCollecting({ onReady, onComplete });
@@ -66,10 +66,10 @@ const drawRealTime = (_canvas, _canvasTL, _canvasPB, {
     // setCallBack()
 
     switchRealTime(_canvas, _canvasTL, { onReady, onProcess, onComplete });
-    //console.log("drawRealTime:   " + drawRealTime);
+    //debugLog("drawRealTime:   " + drawRealTime);
     initCanvasPB(_canvasPB);
     // const otimieVisual = new OtomieVisual.OtomieVisual();
-    // console.log("otimieVisual",otimieVisual);
+    // debugLog("otimieVisual",otimieVisual);
     // otimieVisual.init(document.querySelector("#CanvasRealTime"), 640, 640);
     // otimieVisual.render();
 
@@ -94,9 +94,9 @@ const getArchive = (_canvas, {
 } = {}) => {
 
     //収録データを取得する処理
-    console.log("_canvas", _canvas);
-    console.log("サムネイル用キャンバスに描画");
-    console.log("getArchive");
+    debugLog("_canvas", _canvas);
+    debugLog("サムネイル用キャンバスに描画");
+    debugLog("getArchive");
 
     if (playingData !== null) {
         onReady(true);
@@ -104,7 +104,7 @@ const getArchive = (_canvas, {
         getNum(getNumPlayingData());
         if (thumbnail !== null) {
             getImage(thumbnail);
-        }
+        }        
         onComplete(true);
 
     }
@@ -132,7 +132,7 @@ const initRec = ({
     // ・
     // ・
     // ・
-    console.log("initRec");
+    debugLog("initRec");
     // setCallBack(initRecCB,{onReady,onComplete});
     prepareRec({ onReady, onComplete });
 
@@ -169,7 +169,7 @@ const recording = ({
 
 
 
-const stopRec = (_canvas,{
+const stopRec = (_canvas, {
     onReady = () => { },
     onComplete = () => { },
 }) => {
@@ -178,8 +178,8 @@ const stopRec = (_canvas,{
     // ・
     // ・
     // ・
-    stopRecording(_canvas,{ onReady, onComplete });
-    console.log("stopRec");
+    stopRecording(_canvas, { onReady, onComplete });
+    debugLog("stopRec");
 
     // if (onReady && typeof onReady === "function") {
     //     onReady(true);
@@ -200,7 +200,7 @@ const play = (_canvas, {
     // ・
     // ・
     // ・
-    console.log("play");
+    debugLog("play");
 
     playDataList(_canvas, { onReady, onProcess, onComplete });
     // if (onReady && typeof onReady === "function") {
@@ -226,7 +226,7 @@ const stopPlaying = ({
     // ・
     // ・
     stopDataList({ onReady, onComplete });
-    console.log("stopPlay");
+    debugLog("stopPlay");
     // if (onReady && typeof onReady === "function") {
     //     onReady(true);
     // }
@@ -245,7 +245,7 @@ const restartPlaying = ({
     // ・
     // ・
     restartDataList({ onReady, onComplete });
-    console.log("stopPlay");
+    debugLog("stopPlay");
     // if (onReady && typeof onReady === "function") {
     //     onReady(true);
     // }
@@ -267,7 +267,7 @@ const deleteData = ({
     // ・
     // ・
 
-    console.log("deleteData");
+    debugLog("deleteData");
     deletePlayingData({ onReady, onComplete });
     // if (onReady && typeof onReady === "function") {
     //     onReady(true);
@@ -278,3 +278,4 @@ const deleteData = ({
     // }
 
 }
+
