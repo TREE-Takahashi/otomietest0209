@@ -6,6 +6,7 @@
 body {
     position: relative;
     user-select: none;
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
     margin: 0;
     /* あとで消す */
     background-color: rgb(204, 204, 204);
@@ -51,19 +52,18 @@ body {
 /* Splash画面画像フェードアウト */
 .FadeOutSplash {
     animation-name: fadeOutSplash;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
+    animation-iteration-count: 30;
 }
 /* スプラッシュ画面フェードアウトアニメ */
 @keyframes fadeOutSplash {
-    0%, 40% {
-        opacity: 1;
-    }
-
-    100% {
+    0% {
         opacity: 0;
-        visibility: collapse;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
@@ -304,7 +304,6 @@ body {
 #CanvasRecMovie {
     overflow: hidden;
     background-size: contain;
-    user-select: none;
 }
 /* 再生画面のグラフィック */
 #CanvasRecMovie>canvas {
