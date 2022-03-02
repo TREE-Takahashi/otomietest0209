@@ -131,6 +131,17 @@ body {
     }
 }
 
+/* タップしてつぎへ */
+.HowtoNext {
+    position: absolute;
+    bottom: 79px;
+    left: 0px;
+    width: 428px;
+    height: 25px;
+}
+
+
+
 /*-------------------- 収録画面 -----------------------*/
 #RecWindow {
     background-color: rgb(255, 255, 255);
@@ -293,6 +304,7 @@ body {
 #CanvasRecMovie {
     overflow: hidden;
     background-size: contain;
+    user-select: none;
 }
 /* 再生画面のグラフィック */
 #CanvasRecMovie>canvas {
@@ -463,8 +475,9 @@ body {
     width: 100%;
     line-height: 20px;
     text-align: left;
-    font-family: sans-serif;
-    font-weight: 500;
+    /* font-family: sans-serif; */
+    font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";
+    font-weight: normal;
     font-size: 20px;
     letter-spacing: 0em;
     color: rgb(127, 127, 127);
