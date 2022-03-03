@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
-/* 位置、組み、サイズ、形、線、色 */
-
+html {
+    touch-action: manipulation; /*ダブルタップ無効*/
+}
 
 body {
     position: relative;
     user-select: none;
     -webkit-user-select: none; /* Chrome, Safari, and Opera 選択無効*/
-    touch-action: manipulation; 
     margin: 0;
     /* あとで消す */
     background-color: rgb(204, 204, 204);
