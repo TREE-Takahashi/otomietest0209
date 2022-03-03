@@ -242,6 +242,16 @@ const recordingCallBack = {
         }
     }
 };
+
+let year;
+let month;
+let date;
+let hour;
+let minute;
+const recDateTime = document.getElementById('RecDateTime');
+const changeRecDateTime = () => {
+    recDateTime.textContent = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute;
+};
 // stopRecコールバック
 const stopRecCallBack = {
     onReady: (tf) => {
@@ -256,6 +266,18 @@ const stopRecCallBack = {
         else {
             console.log("UI通知-stopRec-収録が停止できませんでした×");
         }
+    },
+    getRecTime: (recTime) => {
+        console.log("UI通知-stopRec-収録時の時間を取得しました〇");
+        let dateTime = Date(recTime); //Dateオブジェクトを使ってオブジェクト化
+        console.log('Mon Apr 12 2021 09:12:17 GMT +0900みたいなのが出る' + dateTime);
+        year = dateTime.getFullYear();
+        month = dateTime.getMonth() + 1;
+        date = dateTime.getDate();
+        hour = dateTime.getHours();
+        minute = dateTime.getMinutes();
+        console.log(year + '年' + month + '月' + date + '日' + hour + '時' + minute + '分');
+        changeRecDateTime();
     }
 };
 

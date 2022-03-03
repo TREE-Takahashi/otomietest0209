@@ -52,7 +52,7 @@ body {
 /* Splash画面画像フェードアウト */
 .FadeOutSplash {
     animation-name: fadeOutSplash;
-    animation-duration: 2s;
+    animation-duration: 2.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
@@ -486,9 +486,9 @@ body {
 #RecContainer.RecPlayer #RecDateTime,
 #RecContainer.RecPlayer #RecLocation {
     position: absolute;
-    left: 90px;
+    left: 75px;
     height: 20px;
-    width: 100%;
+    width: 353px;
     line-height: 20px;
     text-align: left;
     /* font-family: sans-serif; */
@@ -817,7 +817,7 @@ body {
 #DeleteCompleteText {
     pointer-events: none;
     position: absolute;
-    top: 30px;
+    top: 40px;
     left: 24px;
     width: 380px;
     height: 70px;
@@ -832,14 +832,14 @@ body {
     letter-spacing: 0.1em;
     color: rgb(51, 51, 51);
     animation-name: fadeOutDeleteCompleteText;
-    animation-duration: 1.5s;
+    animation-duration: 2s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
 @keyframes fadeOutDeleteCompleteText {
     0% {
         opacity: 0;
-        transform: translateY(-70px);
+        transform: translateY(-80px);
     }
     45%,55% {
         opacity: 1;
@@ -847,7 +847,7 @@ body {
     }
     100% {
         opacity: 0;
-        transform: translateY(-70px);
+        transform: translateY(-80px);
     }
 }
 
