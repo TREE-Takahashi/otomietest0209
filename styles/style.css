@@ -6,7 +6,8 @@
 body {
     position: relative;
     user-select: none;
-    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera 選択無効*/
+    touch-action: manipulation; 
     margin: 0;
     /* あとで消す */
     background-color: rgb(204, 204, 204);
