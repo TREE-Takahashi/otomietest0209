@@ -2,12 +2,37 @@
 
 const otomieVisual = new OtomieVisual();
 
-// スクロールを禁止にする関数
-function disableScroll(event) {
-    event.preventDefault();
+{
+    // スクロールを禁止にする関数
+    function disableScroll(event) {
+        event.preventDefault();
+    }
+    document.addEventListener('touchmove', disableScroll, { passive: false });
+    document.addEventListener('mousewheel', disableScroll, { passive: false });
+    
+    // タッチ操作での拡大縮小禁止
+    function no_scaling() {
+        document.addEventListener("touchmove", mobile_no_scroll, { passive: false });
+    }
+    no_scaling();
+    // 拡大縮小禁止
+    function mobile_no_scroll(event) {
+        // ２本指での操作の場合
+        if (event.touches.length >= 2) {
+            // デフォルトの動作をさせない
+            event.preventDefault();
+        }
+    }
+    /* ダブルタップによる拡大を禁止 */
+    var t = 0;
+    document.documentElement.addEventListener('touchend', function (e) {
+        var now = new Date().getTime();
+        if ((now - t) < 350) {
+            e.preventDefault();
+        }
+        t = now;
+    }, false);
 }
-document.addEventListener('touchmove', disableScroll, { passive: false });
-document.addEventListener('mousewheel', disableScroll, { passive: false });
 
 // スプラッシュ画面
 {
@@ -110,7 +135,7 @@ const thumbnailImage = document.getElementById('ThumbnailImage');
 let thumbnailSrc; //サムネイル画像のデータ変数
 // サムネイル画像を入れ替える関数
 const changethumbnail = (thumbnailSrc) => {
-    thumbnailImage.style.backgroundImage =  thumbnailSrc;
+    thumbnailImage.style.backgroundImage = thumbnailSrc;
 };
 // getArchiveコールバック
 const getArchiveCallBack = {
@@ -137,8 +162,8 @@ const getArchiveCallBack = {
     },
     getImage: (thumbnailImg) => {
         console.log('UI通知-getArchive-サムネイル画像を入れます');
-        CanvasRecMovie.style.backgroundImage =  "url(" + thumbnailImg + ")";
-        thumbnailSrc =  "url(" + thumbnailImg + ")"; //サムネイル画像のデータ変数差し替え
+        CanvasRecMovie.style.backgroundImage = "url(" + thumbnailImg + ")";
+        thumbnailSrc = "url(" + thumbnailImg + ")"; //サムネイル画像のデータ変数差し替え
         if (CanvasRecMovie.hasChildNodes() == true) { //子要素がいるなら
             console.log('UI通知-CanvasRecMovieは子要素持っている');
             CanvasRecMovie.firstChild.classList.add('Displaynone'); //CanvasRecMovieの子を見た目OFF
@@ -248,9 +273,18 @@ let month;
 let date;
 let hour;
 let minute;
-const recDateTime = document.getElementById('RecDateTime');
+const recDateTimeText = document.getElementById('RecDateTimeText');
+// 時間をUIに反映
 const changeRecDateTime = () => {
-    recDateTime.textContent = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute;
+    recDateTimeText.innerText = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute;
+};
+// 1桁の数字を0埋めで2桁にする
+const toDoubleDigits = (num) => {
+    num += "";
+    if (num.length === 1) {
+        num = "0" + num;
+    }
+    return num;
 };
 // stopRecコールバック
 const stopRecCallBack = {
@@ -269,15 +303,13 @@ const stopRecCallBack = {
     },
     getRecTime: (recTime) => {
         console.log("UI通知-stopRec-収録時の時間を取得しました〇");
-        let dateTime = Date(recTime); //Dateオブジェクトを使ってオブジェクト化
-        console.log('Mon Apr 12 2021 09:12:17 GMT +0900みたいなのが出る' + dateTime);
+        let dateTime = new Date(recTime); //Dateオブジェクトを使ってオブジェクト化
         year = dateTime.getFullYear();
         month = dateTime.getMonth() + 1;
         date = dateTime.getDate();
         hour = dateTime.getHours();
-        minute = dateTime.getMinutes();
-        console.log(year + '年' + month + '月' + date + '日' + hour + '時' + minute + '分');
-        changeRecDateTime();
+        minute = toDoubleDigits(dateTime.getMinutes()); //取得した上で一桁なら二桁に
+        changeRecDateTime(); //UIに反映
     }
 };
 
@@ -509,50 +541,3 @@ const grayBackColor = () => {
 const removeGrayBackColor = () => {
     clickDefence.classList.remove('GrayBackColor');
 };
-
-
-// タッチ操作での拡大縮小禁止
-function no_scaling() {
-    document.addEventListener("touchmove", mobile_no_scroll, { passive: false });
-}
-no_scaling();
-// 拡大縮小禁止
-function mobile_no_scroll(event) {
-    // ２本指での操作の場合
-    if (event.touches.length >= 2) {
-        // デフォルトの動作をさせない
-        event.preventDefault();
-    }
-}
-
-
-// テスト用
-document.addEventListener('keypress', keypress_ivent);
-// const recContainer = document.getElementById('RecContainer');
-function keypress_ivent(e) {
-    if (e.key === 'a' || e.key === 'A') {
-        //Aキーが押された時の処理 //収録終了
-        document.addEventListener('touchmove', disableScroll, { passive: false });
-        document.addEventListener('mousewheel', disableScroll, { passive: false });
-    }
-    if (e.key === 'b' || e.key === 'B') {
-        //Bキーが押された時の処理 //左下アイコンタップ
-        openPlayWindow();
-    }
-    if (e.key === 'c' || e.key === 'C') {
-        //Cキーが押された時の処理 //×アイコンタップ
-        recContainer.classList.remove('RecPlayer');
-        recContainer.classList.add('RecIcon');
-    }
-    if (e.key === 'd' || e.key === 'D') {
-        console.log('あああああああああ');
-
-    }
-    return false;
-}
-
-
-
-
-// 呼ばれたタイミングでCanvasの子要素のcssを削除
-//

@@ -350,8 +350,10 @@ body {
 /* それ以外非表示 */
 #RecContainer.RecFinish #WhiteFadePanelPlay,
 #RecContainer.RecFinish #CanvasWaveFormPlay,
-#RecContainer.RecFinish #RecDateTime,
-#RecContainer.RecFinish #RecLocation,
+#RecContainer.RecFinish #RecDateTimeImg,
+#RecContainer.RecFinish #RecLocationImg,
+#RecContainer.RecFinish #RecDateTimeText,
+#RecContainer.RecFinish #RecLocationText,
 #RecContainer.RecFinish #PlayBottomCover {
     display: none;
 }
@@ -379,15 +381,15 @@ body {
 
 /* その他 */
 #RecContainer.RecIcon #CanvasWaveFormPlay,
-#RecContainer.RecIcon #RecDateTime,
-#RecContainer.RecIcon #RecLocation,
+#RecContainer.RecIcon #RecDateTimeImg,
+#RecContainer.RecIcon #RecLocationImg,
+#RecContainer.RecIcon #RecDateTimeText,
+#RecContainer.RecIcon #RecLocationText,
 #RecContainer.RecIcon #PlayBottomCover,
 #RecContainer.RecIcon #ButtonStartPlayBack,
 #RecContainer.RecIcon #ButtonStartPlay,
 #RecContainer.RecIcon #ButtonBackToRecWindow,
-#RecContainer.RecIcon #ButtonDeleteMovie,
-#RecContainer.RecIcon #RecDateTime,
-#RecContainer.RecIcon #RecLocation {
+#RecContainer.RecIcon #ButtonDeleteMovie {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -401,17 +403,24 @@ body {
 #RecContainer.RecIcon #ButtonDeleteMovie {
     line-height: 30px;
     text-align: center;
-    font-family: sans-serif;
     font-size: 0px;
     color: rgb(230, 230, 230);
 }
 
-/* 日時場所共通 */
-#RecContainer.RecIcon #RecDateTime,
-#RecContainer.RecIcon #RecLocation {
+/* 日時場所画像共通 */
+#RecContainer.RecIcon #RecDateTimeImg,
+#RecContainer.RecIcon #RecLocationImg {
+    position: absolute;
+    left: 75px;
+    height: 20px;
+    width: 20px;
+}
+/* 日時場所テキスト共通 */
+#RecContainer.RecIcon #RecDateTimeText,
+#RecContainer.RecIcon #RecLocationText {
     line-height: 20px;
     text-align: left;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-size: 0px;
     color: rgb(127, 127, 127);
 }
@@ -440,15 +449,17 @@ body {
 #RecContainer.RecIcon #WhiteFadePanelPlay,
 #RecContainer.RecIcon #CanvasRecMovie,
 #RecContainer.RecIcon #CanvasWaveFormPlay,
-#RecContainer.RecIcon #RecDateTime,
-#RecContainer.RecIcon #RecLocation,
+#RecContainer.RecIcon #RecDateTimeImg,
+#RecContainer.RecIcon #RecLocationImg,
+#RecContainer.RecIcon #RecDateTimeText,
+#RecContainer.RecIcon #RecLocationText,
 #RecContainer.RecIcon #PlayBottomCover,
 #RecContainer.RecIcon #ButtonStartPlayBack,
 #RecContainer.RecIcon #ButtonStartPlay,
 #RecContainer.RecIcon #ButtonBackToRecWindow,
 #RecContainer.RecIcon #ButtonDeleteMovie,
 #RecContainer.RecIcon #ButtonStartPlay.PlayMovieBtn::before {
-    transition-duration: 0.75s;
+    transition-duration: 0.5s;
 }
 
 /* -----------------プレイヤー状態------------------ */
@@ -482,36 +493,45 @@ body {
     /* background-color: rgb(255, 225, 54); */
 }
 /* 日時場所画像共通 */
-#RecDateTimeImg,
-#RecLocationImg {
+#RecContainer.RecPlayer #RecDateTimeImg,
+#RecContainer.RecPlayer #RecLocationImg {
+    position: absolute;
+    left: 75px;
     height: 20px;
     width: 20px;
 }
-/* 日時場所共通 */
-#RecContainer.RecPlayer #RecDateTime,
-#RecContainer.RecPlayer #RecLocation {
+/* 日時画像 */
+#RecContainer.RecPlayer #RecDateTimeImg {
+    bottom: 219px;
+}
+/* 場所画像 */
+#RecContainer.RecPlayer #RecLocationImg {
+    bottom: 189px;
+}
+/* 日時場所テキスト共通 */
+#RecContainer.RecPlayer #RecDateTimeText,
+#RecContainer.RecPlayer #RecLocationText {
     position: absolute;
-    left: 75px;
+    left: 102px;
     height: 20px;
     width: 353px;
     line-height: 20px;
     text-align: left;
-    /* font-family: sans-serif; */
-    font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";
-    font-weight: normal;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
     font-size: 20px;
     letter-spacing: 0em;
     color: rgb(127, 127, 127);
 }
 
-/* 日時 */
-#RecContainer.RecPlayer #RecDateTime {
+/* 日時テキスト */
+#RecContainer.RecPlayer #RecDateTimeText {
     position: absolute;
     bottom: 219px;
 }
 
-/* 場所 */
-#RecContainer.RecPlayer #RecLocation {
+/* 場所テキスト */
+#RecContainer.RecPlayer #RecLocationText {
     position: absolute;
     bottom: 189px;
 }
@@ -591,7 +611,7 @@ body {
     height: 30px;
     line-height: 30px;
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-size: 35px;
     color: rgb(230, 230, 230);
 }
@@ -612,8 +632,10 @@ body {
 #RecContainer.RecPlayer #WhiteFadePanelPlay,
 #RecContainer.RecPlayer #CanvasRecMovie,
 #RecContainer.RecPlayer #CanvasWaveFormPlay,
-#RecContainer.RecPlayer #RecDateTime,
-#RecContainer.RecPlayer #RecLocation,
+#RecContainer.RecPlayer #RecDateTimeImg,
+#RecContainer.RecPlayer #RecLocationImg,
+#RecContainer.RecPlayer #RecDateTimeText,
+#RecContainer.RecPlayer #RecLocationText,
 #RecContainer.RecPlayer #PlayBottomCover,
 #RecContainer.RecPlayer #ButtonStartPlayBack,
 #RecContainer.RecPlayer #ButtonStartPlay,
@@ -638,7 +660,7 @@ body {
 
 /* 灰色(クリック抑止板用) */
 .GrayBackColor {
-    background-color: rgba(110, 110, 110, 0.4);
+    background-color: rgba(110, 110, 110, 0.5);
 }
 
 /* タイトルロゴ */
@@ -708,9 +730,9 @@ body {
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
     line-height: 75px;
     text-align: center;
-    font-family: sans-serif;
-    font-weight: 500;
-    font-size: 19px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
     letter-spacing: 0em;
     color: rgb(51, 51, 51);
 }
@@ -725,7 +747,7 @@ body {
     background-color: rgb(200, 200, 200);
     line-height: 40px;
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 0em;
@@ -742,7 +764,7 @@ body {
     background-color: rgb(18, 77, 274);
     line-height: 40px;
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 0em;
@@ -772,8 +794,8 @@ body {
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0);
     line-height: 50px;
     text-align: center;
-    font-family: sans-serif;
-    font-weight: 500;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 200;
     font-size: 12px;
     letter-spacing: 0em;
     color: rgba(51, 51, 51, 0);
@@ -789,7 +811,7 @@ body {
     background-color: rgba(200, 200, 200, 0);
     line-height: 27px;
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-weight: 300;
     font-size: 10px;
     letter-spacing: 0em;
@@ -806,7 +828,7 @@ body {
     background-color: rgba(18, 77, 274, 0);
     line-height: 27px;
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-weight: 300;
     font-size: 10px;
     letter-spacing: 0em;
@@ -830,10 +852,10 @@ body {
     height: 70px;
     border-radius: 10px;
     background-color: rgba(230, 230, 230, 0.7);
-    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
     line-height: 70px;
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-weight: bold;
     font-size: 19px;
     letter-spacing: 0.1em;

@@ -104,7 +104,7 @@ const getArchive = (_canvas, {
         getNum(getNumPlayingData());
         if (thumbnail !== null) {
             getImage(thumbnail);
-        }        
+        }
         onComplete(true);
 
     }
@@ -172,6 +172,7 @@ const recording = ({
 const stopRec = (_canvas, {
     onReady = () => { },
     onComplete = () => { },
+    getRecTime = () => { },
 }) => {
 
     //収録停止する処理
@@ -179,6 +180,7 @@ const stopRec = (_canvas, {
     // ・
     // ・
     stopRecording(_canvas, { onReady, onComplete });
+    getRecTime(Date.now());
     debugLog("stopRec");
 
     // if (onReady && typeof onReady === "function") {
