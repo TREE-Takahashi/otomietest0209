@@ -6,9 +6,11 @@ html {
 
 body {
     position: relative;
+    margin: 0;
+    width: 428px;
+    height: 926px;
     user-select: none;
     -webkit-user-select: none; /* Chrome, Safari, and Opera 選択無効*/
-    margin: 0;
     background-color: rgb(250, 250, 250);
 }
 
