@@ -481,7 +481,12 @@ body {
     height: 120px;
     /* background-color: rgb(255, 225, 54); */
 }
-
+/* 日時場所画像共通 */
+#RecDateTimeImg,
+#RecLocationImg {
+    height: 20px;
+    width: 20px;
+}
 /* 日時場所共通 */
 #RecContainer.RecPlayer #RecDateTime,
 #RecContainer.RecPlayer #RecLocation {
@@ -693,7 +698,8 @@ body {
 #DeleteConfirmText.ActivePopupWindow {
     pointer-events: auto;
     position: absolute;
-    top: 273px;
+    /* top: 273px; */
+    top: 398px;
     left: 64px;
     width: 300px;
     height: 130px;
@@ -756,7 +762,8 @@ body {
 #DeleteConfirmText.InactivePopupWindow {
     pointer-events: none; /* 見えない時に押せないように */
     position: absolute;
-    top: 294.5px;
+    /* top: 294.5px; */
+    top: 419.5px;
     left: 114px;
     width: 200px;
     height: 87px;
@@ -832,7 +839,7 @@ body {
     letter-spacing: 0.1em;
     color: rgb(51, 51, 51);
     animation-name: fadeOutDeleteCompleteText;
-    animation-duration: 2s;
+    animation-duration: 2.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
