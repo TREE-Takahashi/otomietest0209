@@ -42,6 +42,7 @@ const otomieVisual = new OtomieVisual();
 
     const splashNone = () => {
         splashWindow.classList.add('Displaynone');
+        window.alert("エラーです");
     };
     splashImageGrp.addEventListener('animationend', splashNone);
 }
