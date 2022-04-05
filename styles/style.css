@@ -194,7 +194,7 @@ body {
     margin-right: auto;
     width: 80vw;
     height: 80vw;
-    border-radius: 30px;
+    border-radius: 10%;
     background-color: rgb(194, 194, 194);
     overflow: hidden;
 }
