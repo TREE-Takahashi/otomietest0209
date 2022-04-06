@@ -203,6 +203,7 @@ body {
 #VisualRealTime>canvas {
     width: 100%;
     height: 100%;
+    border-radius: 10%;
 }
 
 /* 収録画面の波形 */
@@ -337,8 +338,8 @@ body {
 /* サムネイル画像 */
 #ThumbnailImage {
     position: absolute;
-    bottom: 40px;
-    left: 30px;
+    bottom: 7.5vw;
+    left: 7.5vw;
     width: 25vw;
     height: 25vw;
     border-radius: 15%;
@@ -433,8 +434,8 @@ body {
 /*グラフィック */
 #RecContainer.RecIcon #CanvasRecMovie {
     position: absolute;
-    bottom: 40px;
-    left: 30px;
+    bottom: 7.5vw;
+    left: 7.5vw;
     width: 25vw;
     height: 25vw;
     border-radius: 15%;
