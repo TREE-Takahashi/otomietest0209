@@ -100,18 +100,67 @@ body {
     min-width: 100%;
 }
 /* Howtoカード */
-#ConceptCard, #HowtoImg02, #HowtoImg03 {
+#ConceptCard, #MicOnCard, #StartCard {
+    position: absolute;
     width: 100%;
     height: 100%;
+    background-color: rgb(255, 255, 255);
 }
 /* Howto画像 */
-#HowtoImg01, #HowtoImg02, #HowtoImg03 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+/* #HowtoImg01, #HowtoImg02, #HowtoImg03 {
+    position: static;
+    margin-top: 40%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    height: 80vw;
+} */
+/* Howto画面タイトル */
+#Howto01-Title, #Howto02-Title, #Howto03-Title {
+    margin-top: 27%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /* width: 1284px;
+    height: 168px; */
     width: 428px;
-    height: 926px;
+    height: 56px;
+    width: 285px;
+    height: 37px;
 }
+/* Howto画面イメージ */
+#Howto01-Image, #Howto02-Image, #Howto03-Image {
+    margin-top: 15%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 357px;
+    height: 262px;
+}
+/* Howto画面テキスト */
+#Howto01-Text, #Howto02-Text, #Howto03-Text {
+    margin-top: 20%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 275px;
+    height: 133px;
+}
+/* Howto画面ドット */
+#Howto01-Dot, #Howto02-Dot, #Howto03-Dot {
+    margin-top: 5%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 64px;
+    height: 10px;
+}
+
 /* Howto画面のアニメーション */
 .SlideHowtoAnim01 {
     animation-name: slideHowtoAnim01;
@@ -143,9 +192,11 @@ body {
 }
 /* タップしてつぎへ */
 .HowtoNext {
-    position: absolute;
-    bottom: 79px;
-    left: 0px;
+    margin-top: 25%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
     width: 428px;
     height: 25px;
     animation-name: howtoNextAnim;
