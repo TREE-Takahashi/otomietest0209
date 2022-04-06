@@ -339,8 +339,8 @@ body {
     position: absolute;
     bottom: 40px;
     left: 30px;
-    width: 105px;
-    height: 105px;
+    width: 25vw;
+    height: 25vw;
     border-radius: 15%;
     background-size: contain;
     background-color: rgb(98, 218, 255);
@@ -435,8 +435,8 @@ body {
     position: absolute;
     bottom: 40px;
     left: 30px;
-    width: 105px;
-    height: 105px;
+    width: 25vw;
+    height: 25vw;
     border-radius: 15%;
     background-color: rgb(125, 255, 98);
 }
