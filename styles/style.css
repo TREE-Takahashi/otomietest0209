@@ -828,10 +828,16 @@ body {
 /* 削除確認テキスト-アクティブ状態 */
 #DeleteConfirmText.ActivePopupWindow {
     pointer-events: auto;
-    position: absolute;
-    /* top: 273px; */
+    /* position: absolute;
     top: 398px;
-    left: 64px;
+    left: 64px; */
+
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
     width: 300px;
     height: 130px;
     border-radius: 8px;
@@ -892,10 +898,16 @@ body {
 /* 削除確認テキスト-非アクティブ状態 */
 #DeleteConfirmText.InactivePopupWindow {
     pointer-events: none; /* 見えない時に押せないように */
-    position: absolute;
-    /* top: 294.5px; */
+    /* position: absolute;
     top: 419.5px;
-    left: 114px;
+    left: 114px; */
+
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
     width: 200px;
     height: 87px;
     border-radius: 5px;
