@@ -125,8 +125,8 @@ body {
     display: block;
     /* width: 285px;
     height: 37px; */
-    width: 28.5vh;
-    height: 3.7vh;
+    width: 31.4vh;
+    height: 4.1vh;
 }
 /* Howto画面イメージ */
 #Howto01-Image, #Howto02-Image, #Howto03-Image {
@@ -135,8 +135,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 35.7vh;
-    height: 26.2vh;
+    width: 39.3vh;
+    height: 28.8vh;
 }
 /* Howto画面テキスト */
 #Howto01-Text, #Howto02-Text, #Howto03-Text {
@@ -145,8 +145,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 27.5vh;
-    height: 13.3vh;
+    width: 30.3vh;
+    height: 14.6vh;
 }
 /* Howto画面ドット */
 #Howto01-Dot, #Howto02-Dot, #Howto03-Dot {
@@ -155,8 +155,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 6.4vh;
-    height: 1.0vh;
+    width: 7.0vh;
+    height: 1.1vh;
 }
 
 /* Howto画面のアニメーション */
@@ -195,8 +195,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 14.7vh;
-    height: 2.0vh;
+    width: 16.2vh;
+    height: 2.2vh;
     animation-name: howtoNextAnim;
     animation-duration: 2s;
     animation-timing-function: ease-in-out;
