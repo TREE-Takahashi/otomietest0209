@@ -279,7 +279,7 @@ body {
     height: 13vh; */
 
     position: absolute;
-    top: 67vh;
+    top: 65vh;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
@@ -532,6 +532,7 @@ body {
     position: absolute;
     top: 85.5vh;
     left: 3.5vh;
+    margin-right: auto;
     width: 11vh;
     height: 11vh;
 
@@ -661,7 +662,7 @@ body {
     height: 120px; */
 
     position: absolute;
-    top: 67vh;
+    top: 65vh;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
