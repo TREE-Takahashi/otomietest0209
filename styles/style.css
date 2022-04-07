@@ -639,10 +639,9 @@ body {
     height: 340px; */
 
     position: absolute;
-    top: 37vh;
+    top: 18vh;
     left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 37vh;
     height: 37vh;
     
