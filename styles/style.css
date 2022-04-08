@@ -244,10 +244,16 @@ body {
     width: 37vh;
     height: 37vh; */
 
-    position: absolute;
+    /* position: absolute;
     top: 18vh;
     left: 50%;
     transform: translate(-50%);
+    width: 37vh;
+    height: 37vh; */
+
+    display: block;
+    margin: auto;
+    margin-top: 17vh;
     width: 37vh;
     height: 37vh;
 
@@ -277,11 +283,15 @@ body {
     width: 100%;
     height: 13vh; */
 
-    position: absolute;
+    /* position: absolute;
     top: 65vh;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    width: 100%;
+    height: 13vh; */
+
+    margin-top: 10%;
     width: 100%;
     height: 13vh;
 }
@@ -409,12 +419,17 @@ body {
     width: 11vh;
     height: 11vh; */
 
-    position: absolute;
+    /* position: absolute;
     top: 85.5vh;
     left: 19.5%;
     transform: translate(-50%);
     width: 11vh;
+    height: 11vh; */
+
+    width: 11vh;
     height: 11vh;
+    margin-top: 84vh;
+    margin-left: -63vw;
 
     border-radius: 15%;
     background-size: contain;
@@ -548,8 +563,8 @@ body {
 
     width: 11vh;
     height: 11vh;
-    margin-top: 85.5vh;
-    margin-left: -28vh;
+    margin-top: 84vh;
+    margin-left: -63vw;
 
     border-radius: 15%;
     background-color: rgb(125, 255, 98);
@@ -644,8 +659,9 @@ body {
     opacity: 1;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    width: 100%;
-    height: 100%;
+    z-index: -2;
+    width: 100vw;
+    height: 100vh;
 }
 
 /* グラフィック */
@@ -656,15 +672,22 @@ body {
     width: 340px;
     height: 340px; */
 
-    position: absolute;
+    /* position: absolute;
     top: 18vh;
     left: 50%;
     transform: translateX(-50%);
     width: 37vh;
-    height: 37vh;
+    height: 37vh; */
     
+    position: static;
+    display: block;
+    margin-top: 17vh;
+    width: 37vh;
+    height: 37vh;
+
     border-radius: 30px;
     background-color: rgb(125, 255, 98);
+    overflow: hidden;
 }
 
 /* 波形 */
@@ -682,11 +705,18 @@ body {
     transform: translate(-50%, -50%);
     width: 100%;
     height: 13vh;
+
+    /* position: static;
+    display: block;
+    margin-top: 10%;
+    width: 100%;
+    height: 13vh; */
 }
 /* 日時場所画像共通 */
 #RecContainer.RecPlayer #RecDateTimeImg,
 #RecContainer.RecPlayer #RecLocationImg {
     position: absolute;
+    z-index: -1;
     /* left: 75px; */
 
     left: 17.5vw;
@@ -710,6 +740,7 @@ body {
 #RecContainer.RecPlayer #RecDateTimeText,
 #RecContainer.RecPlayer #RecLocationText {
     position: absolute;
+    z-index: -1;
     left: 23.5vw;
     height: 3vh;
     width: 75vw;
@@ -748,6 +779,7 @@ body {
     height: 130px; */
 
     position: absolute;
+    z-index: -1;
     bottom: 0;
     width: 100%;
     height: 13.5vh;
@@ -765,6 +797,7 @@ body {
     height: 110px; */
 
     position: absolute;
+    z-index: -1;
     top: 7%;
     left: 50%;
     margin-right: -50%;
@@ -785,6 +818,7 @@ body {
     height: 100px; */
 
     position: absolute;
+    z-index: -1;
     top: 50%;
     left: 50%;
     margin-right: -50%;
@@ -799,6 +833,7 @@ body {
 /* 再生/停止ボタン - 再生ボタン状態 */
 #RecContainer.RecPlayer #ButtonStartPlay.PlayMovieBtn::before {
     position: absolute;
+    z-index: -1;
     top: 50%;
     left: 32.5%;
     transform: translateY(-50%);
@@ -814,6 +849,7 @@ body {
 #RecContainer.RecPlayer #ButtonStartPlay.StopMovieBtn::before,
 #RecContainer.RecPlayer #ButtonStartPlay.StopMovieBtn::after {
     position: absolute;
+    z-index: -1;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 12px;
@@ -841,6 +877,7 @@ body {
     line-height: 30px; */
 
     position: absolute;
+    z-index: -1;
     top: 30%;
     width: 10%;
     height: 30%;
@@ -858,6 +895,7 @@ body {
     left: 40px; */
 
     position: absolute;
+    z-index: -1;
     left: 10%;
 }
 
@@ -867,6 +905,7 @@ body {
     left: 358px; */
 
     position: absolute;
+    z-index: -1;
     left: 85%;
 }
 
