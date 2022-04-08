@@ -415,7 +415,7 @@ body {
     transform: translate(-50%);
     width: 11vh;
     height: 11vh;
-    
+
     border-radius: 15%;
     background-size: contain;
     background-color: rgb(98, 218, 255);
@@ -444,8 +444,8 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* align-items: center; */
+    /* text-align: center; */
 }
 
 /* 再生画面のグラフィックの親 */
@@ -485,12 +485,16 @@ body {
     width: 37vh;
     height: 37vh; */
 
-    position: absolute;
+    /* position: absolute;
     top: 18vh;
     left: 50%;
     transform: translateX(-50%);
     width: 37vh;
+    height: 37vh; */
+
+    width: 37vh;
     height: 37vh;
+    margin-top: 17vh;
     
     border-radius: 30px;
     background-color: rgb(125, 255, 98);
@@ -535,12 +539,17 @@ body {
     width: 11vh;
     height: 11vh; */
 
-    position: absolute;
+    /* position: absolute;
     top: 85.5vh;
     left: 19.5%;
     transform: translate(-50%);
     width: 11vh;
+    height: 11vh; */
+
+    width: 11vh;
     height: 11vh;
+    margin-top: 85.5vh;
+    margin-left: -28vh;
 
     border-radius: 15%;
     background-color: rgb(125, 255, 98);
