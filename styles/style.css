@@ -480,7 +480,7 @@ body {
     position: absolute;
     top: 18vh;
     left: 50%;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
     width: 37vh;
     height: 37vh;
     
@@ -529,11 +529,8 @@ body {
 
     position: absolute;
     top: 85.5vh;
-    /* left: 3.5vh;
-    transform: translateX(-0%); */
-
     left: 19.5%;
-    transform: translate(-50%);
+    /* transform: translate(-50%); */
     width: 11vh;
     height: 11vh;
 
@@ -621,7 +618,7 @@ body {
 #RecContainer.RecIcon #ButtonBackToRecWindow,
 #RecContainer.RecIcon #ButtonDeleteMovie,
 #RecContainer.RecIcon #ButtonStartPlay.PlayMovieBtn::before {
-    transition-duration: 0.5s;
+    transition-duration: 15s;
 }
 
 /* -----------------プレイヤー状態------------------ */
