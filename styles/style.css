@@ -403,11 +403,19 @@ body {
 
 /* サムネイル画像 */
 #ThumbnailImage {
-    position: absolute;
+    /* position: absolute;
     bottom: 3.5vh;
     left: 3.5vh;
     width: 11vh;
+    height: 11vh; */
+
+    position: absolute;
+    top: 85.5vh;
+    left: 19.5%;
+    transform: translate(-50%);
+    width: 11vh;
     height: 11vh;
+    
     border-radius: 15%;
     background-size: contain;
     background-color: rgb(98, 218, 255);
